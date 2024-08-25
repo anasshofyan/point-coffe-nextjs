@@ -11,3 +11,9 @@ body {
     background-color: "bg-light";
     background-image: url("https://ik.imagekit.io/e7fvuczbgfu/Praisindo/PointCoffe/bg-abstract_T6v2RTqRO.png?updatedAt=1723979913634");
 }
+
+@layer utilities {
+    .font-times {
+        font-family: "Times New Roman", Times, serif;
+    }
+}
