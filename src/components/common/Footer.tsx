@@ -55,7 +55,7 @@ function Footer() {
                         <br />
                         Telp :02150897400
                     </p>
-                    <p className="flex flex-row gap-4">
+                    <p className="flex flex-row gap-4 justify-center md:justify-start">
                         <Instagram size={30} />
                         <Twitter size={30} />
                     </p>

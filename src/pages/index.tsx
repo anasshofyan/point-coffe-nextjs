@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection"
+import MembershipSection from "@/components/MembershipSection"
 import OurStorySection from "@/components/OurStorySection"
 import SeasonalMenuSection from "@/components/SeasonalMenuSection"
 
@@ -8,6 +9,7 @@ export default function Home() {
             <HeroSection />
             <SeasonalMenuSection />
             <OurStorySection />
+            <MembershipSection />
         </div>
     )
 }
