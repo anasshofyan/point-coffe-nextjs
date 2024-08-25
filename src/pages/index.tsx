@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection"
+import OurStorySection from "@/components/OurStorySection"
 import SeasonalMenuSection from "@/components/SeasonalMenuSection"
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
         <div className={`"max-w-screen-xl mx-auto w-full`}>
             <HeroSection />
             <SeasonalMenuSection />
+            <OurStorySection />
         </div>
     )
 }
