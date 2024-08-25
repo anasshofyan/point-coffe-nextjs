@@ -1,7 +1,7 @@
 import { EnumIcons } from "@/constants/EnumIcons"
 import { Instagram, MapPin, Menu } from "lucide-react"
 import Image from "next/image"
-import Button from "./common/Button"
+import Button from "./Button"
 
 function Navbar() {
     return (

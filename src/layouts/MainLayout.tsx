@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer"
-import Navbar from "@/components/Navbar"
+import Footer from "@/components/common/Footer"
+import Navbar from "@/components/common/Navbar"
 import { PropsWithChildren } from "react"
 
 function MainLayout({ children }: PropsWithChildren<{}>) {
