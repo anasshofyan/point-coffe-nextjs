@@ -1,6 +1,6 @@
-import React, { FC, ReactNode } from "react"
+import React, { FC, ReactNode, ButtonHTMLAttributes } from "react"
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode
     variant?: "primary" | "secondary" | "nav"
 }
@@ -11,7 +11,7 @@ const Button: FC<ButtonProps> = ({
     ...props
 }) => {
     const baseClasses =
-        "border-none py-2 px-4 flex justify-center items-center text-center no-underline inline-block text-base m-1 cursor-pointer rounded-full transition-colors duration-200 uppercase"
+        "border-none py-2 px-4 w-full flex justify-center items-center text-center no-underline inline-block text-base m-1 cursor-pointer rounded-full transition-colors duration-200 uppercase"
     const primaryClasses = "text-light bg-primary hover:bg-success"
     const secondaryClasses = "text-primary bg-transparent"
     const navClasses =

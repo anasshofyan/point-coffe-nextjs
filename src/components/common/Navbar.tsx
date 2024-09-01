@@ -1,8 +1,9 @@
 import { EnumIcons } from "@/constants/EnumIcons"
-import { Instagram, MapPin, Menu } from "lucide-react"
+import { Instagram, LogIn, MapPin, Menu } from "lucide-react"
 import Image from "next/image"
 import Button from "./Button"
 import Link from "next/link"
+import { EnumNav } from "@/constants/EnumNav"
 
 function Navbar() {
     return (
@@ -19,20 +20,16 @@ function Navbar() {
                 </Link>
                 <Menu size={30} className="block md:hidden" />
                 <div className="hidden flex-row justify-between items-center lg:flex">
-                    <Button variant="nav">Promotions</Button>
-                    <Button variant="nav">
-                        <Link href="/menu">Menu</Link>
-                    </Button>
-                    <Button variant="nav">Fun Fact</Button>
-                    <Button variant="nav">
-                        <Link href="/our-story">Our Story</Link>
-                    </Button>
-                    <Button variant="nav">Feeback</Button>
-                    <Button variant="nav">Membership</Button>
+                    {EnumNav.map((item, index) => (
+                        <Button key={index} variant="nav">
+                            <Link href={item.url}>{item.label}</Link>
+                        </Button>
+                    ))}
                 </div>
                 <div className="hidden lg:flex gap-2">
-                    <Instagram size={30} />
-                    <MapPin size={30} />
+                    <Link className="flex flex-row gap-2" href="/auth/login">
+                        <LogIn /> Masuk
+                    </Link>
                 </div>
             </div>
         </nav>
