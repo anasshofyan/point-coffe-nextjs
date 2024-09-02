@@ -6,12 +6,9 @@ const loginSchema = z.object({
         message:
             "Alamat email tidak valid, harus menggunakan huruf kecil, tanpa karakter khusus, dan diakhiri dengan domain yang valid",
     }),
-    password: z
-        .string()
-        .nonempty({ message: "Kata sandi diperlukan" })
-        .min(6, {
-            message: "Kata sandi harus terdiri dari minimal 6 karakter",
-        }),
+    password: z.string().min(6, {
+        message: "Kata sandi harus terdiri dari minimal 6 karakter",
+    }),
 })
 
 export default loginSchema

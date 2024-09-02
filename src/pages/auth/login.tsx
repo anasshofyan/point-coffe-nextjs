@@ -5,6 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import TextField from "@/components/common/TextField"
 import Button from "@/components/common/Button"
+import { EnumIcons } from "@/constants/EnumIcons"
+import Image from "next/image"
+import Link from "next/link"
 
 type LoginFormInputs = z.infer<typeof loginSchema>
 
@@ -17,13 +20,29 @@ function LoginPage() {
         resolver: zodResolver(loginSchema),
     })
 
-    const onSubmit = (data: LoginFormInputs) => {
-        console.log(data)
+    const onSubmit = async (data: LoginFormInputs) => {
+        const response = await fetch("/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+
+        if (response?.status !== 200) return alert("Login failed")
+        alert("Login success")
     }
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md">
+        <div className="flex items-center justify-center min-h-screen bg-primary">
+            <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-xl">
+                <Image
+                    className="mx-auto"
+                    src={EnumIcons.LOGO_DEFAULT}
+                    alt="logo"
+                    width={100}
+                    height={100}
+                />
                 <h2 className="text-2xl font-bold text-center">Login</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     <TextField
@@ -45,6 +64,23 @@ function LoginPage() {
                         Login
                     </Button>
                 </form>
+                <p className="text-center text-xs">Login with</p>
+                <div className="flex justify-center space-x-4">
+                    <Button
+                        icon={EnumIcons.GOOGLE_ICON}
+                        variant="tertiary"
+                        onClick={() => alert("Login with Google")}
+                    >
+                        Google
+                    </Button>
+                    <Button
+                        icon={EnumIcons.GITHUB_ICON}
+                        variant="tertiary"
+                        onClick={() => alert("Login with GitHub")}
+                    >
+                        GitHub
+                    </Button>
+                </div>
             </div>
         </div>
     )

@@ -21,4 +21,6 @@ export const EnumIcons = {
     STORY_3: `${hostImageUrl}/story/story_3_s4G6kV52M.png?updatedAt=1724052681599`,
     STORY_4: `${hostImageUrl}/story/story_4__CNVmGvhS.png?updatedAt=1724052680779`,
     BG_ABSTRACT: `${hostImageUrl}/bg-abstract_T6v2RTqRO.png?updatedAt=1723979913634`,
+    GOOGLE_ICON: `https://th.bing.com/th/id/OIP.Din44az7iZZDfbsrD1kfGQHaHa?rs=1&pid=ImgDetMain`,
+    GITHUB_ICON: `https://th.bing.com/th/id/OIP.Vn8Aa5ypdPND2xyceZIAdAHaHS?rs=1&pid=ImgDetMain`,
 }
