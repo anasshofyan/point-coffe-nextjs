@@ -3,14 +3,20 @@ import Head from "next/head"
 import { useAtom } from "jotai"
 import Image from "next/image"
 import { formatNumber } from "@/utils/format-number"
-import { cartAtom } from "@/store/coffe"
+import { cartAtom, totalCart } from "@/store/coffe"
 import { useCallback, useState } from "react"
 import { useRouter } from "next/router"
 import { Coffee } from "@/types/coffeeTypes"
 import CartList from "@/components/common/CartList"
+import Title from "@/components/common/Title"
+import { totalAmount } from "../store/coffe"
+import Button from "@/components/common/Button"
+import CartSummarySection from "@/components/CartSummarySection"
 
 function Cart() {
     const [cart, setCart] = useAtom(cartAtom)
+    const [count] = useAtom(totalCart)
+    const [total] = useAtom(totalAmount)
     const router = useRouter()
 
     const updateCart = useCallback(
@@ -56,8 +62,8 @@ function Cart() {
                 />
             </Head>
             <Container>
-                <section className="mt-16">
-                    <h1 className="text-3xl font-bold mb-6">Cart</h1>
+                <section className="mt-24">
+                    <Title text={`Keranjang (${count || 0})`} />
                     {cart.length === 0 ? (
                         <div className="border rounded-lg p-4 shadow-md text-center">
                             <h2 className="text-xl font-semibold mb-2">
@@ -73,6 +79,11 @@ function Cart() {
                             incrementQuantity={incrementQuantity}
                             decrementQuantity={decrementQuantity}
                             goToDetail={goToDetail}
+                        />
+                    )}
+                    {cart.length > 0 && (
+                        <CartSummarySection
+                            onCheckout={() => router.push("/checkout")}
                         />
                     )}
                 </section>

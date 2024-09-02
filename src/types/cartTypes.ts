@@ -13,3 +13,7 @@ export interface CartListProps {
     decrementQuantity: (item: Coffee) => void
     goToDetail: (item: Coffee) => void
 }
+
+export interface CartSummarySectionProps {
+    onCheckout: () => void
+}

@@ -7,3 +7,7 @@ export const totalCart = atom<number>((get) => {
     const cartData: Coffee[] = get(cartAtom)
     return cartData.reduce((acc, item) => acc + item.quantity, 0)
 })
+export const totalAmount = atom<number>((get) => {
+    const cartData: Coffee[] = get(cartAtom)
+    return cartData.reduce((acc, item) => acc + item.price * item.quantity, 0)
+})
