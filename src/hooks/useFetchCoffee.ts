@@ -1,10 +1,13 @@
+import { cartAtom } from "@/store/coffe"
 import { Coffee } from "@/types/coffeeTypes"
+import { useAtom } from "jotai"
 import { useState, useEffect } from "react"
 
 const useFetchCoffee = () => {
     const [coffeeData, setCoffeeData] = useState<Coffee[]>([])
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
+    const [cart] = useAtom(cartAtom)
 
     useEffect(() => {
         const fetchCoffee = async () => {
@@ -18,7 +21,17 @@ const useFetchCoffee = () => {
                     return
                 }
                 const data = await response.json()
-                setCoffeeData(data)
+                const mergeData = data.map((coffee: Coffee) => {
+                    const cartItem = cart.find((item) => item.id === coffee.id)
+                    return {
+                        ...coffee,
+                        quantity: cartItem ? cartItem.quantity : 0,
+                    }
+                })
+
+                console.log(mergeData)
+
+                setCoffeeData(mergeData)
             } catch (err) {
                 if (err instanceof Error) {
                     setError(err.message)

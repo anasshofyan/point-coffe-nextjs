@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react"
+import React, { useState, useMemo, useCallback, useEffect } from "react"
 import Image from "next/image"
 import { Coffee } from "@/types/coffeeTypes"
 import { formatNumber } from "@/utils/format-number"
@@ -14,6 +14,14 @@ const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee }) => {
     const [cart, setCart] = useAtom(cartAtom)
     const [quantity, setQuantity] = useState(0)
     const router = useRouter()
+
+    useEffect(() => {
+        // Inisialisasi quantity dari data keranjang jika ada
+        const cartItem = cart.find((item) => item.id === coffee.id)
+        if (cartItem) {
+            setQuantity(cartItem.quantity)
+        }
+    }, [cart, coffee.id])
 
     const updateCart = useCallback(
         (newQuantity: number) => {
