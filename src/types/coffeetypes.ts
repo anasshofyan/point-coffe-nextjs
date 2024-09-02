@@ -9,4 +9,5 @@ export interface Coffee {
     roast_level: number
     flavor_profile: string[]
     grind_option: string[]
+    quantity: number
 }

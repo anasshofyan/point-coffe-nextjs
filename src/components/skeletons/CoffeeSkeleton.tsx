@@ -12,10 +12,12 @@ const CoffeeSkeleton: React.FC<CoffeeSkeletonProps> = ({ count }) => {
                 {Array.from({ length: count }).map((_, index) => (
                     <div
                         key={index}
-                        className="grid grid-cols-1 md:grid-cols-3 items-center gap-7"
+                        className="grid grid-cols-1 md:grid-cols-3 gap-7 items-center"
                     >
-                        <div className="w-full h-64 bg-gray-300 animate-pulse"></div>
-                        <div className="flex flex-col gap-7 col-span-2">
+                        <div className="col-span-1 md:col-span-1">
+                            <div className="w-full h-64 bg-gray-300 animate-pulse"></div>
+                        </div>
+                        <div className="col-span-1 md:col-span-2 flex flex-col gap-7">
                             <div className="h-8 bg-gray-300 animate-pulse w-1/3"></div>
                             <div className="h-10 bg-gray-300 animate-pulse w-1/2"></div>
                             <div className="h-6 bg-gray-300 animate-pulse w-full"></div>
