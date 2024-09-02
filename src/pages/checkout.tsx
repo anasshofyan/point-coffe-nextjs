@@ -9,7 +9,7 @@ import Title from "@/components/common/Title"
 import Container from "@/components/common/Container"
 import PaymentMethodSection from "@/components/PaymentMethodSection"
 import { EnumPayment } from "@/constants/EnumPayment"
-import { paymentDetail } from "@/store/payment"
+import { paymentDetail, PaymentDetails } from "@/store/payment"
 import Button from "@/components/common/Button"
 import OrderDetailSection from "@/components/OrderDetailSection"
 import UserDetailSection from "@/components/UserDetailSection"
@@ -40,14 +40,14 @@ function Checkout() {
 
     const handlePayment = () => {
         if (selectedPaymentMethod) {
-            const paymentDetails = {
+            const paymentDetails: PaymentDetails = {
                 user: {
-                    name: session.user && session.user.name,
-                    email: session.user && session.user.email,
-                    image: session.user && session.user.image,
+                    name: session.user?.name ?? null,
+                    email: session.user?.email ?? null,
+                    image: session.user?.image ?? null,
                 },
-                cart,
-                totalAmount,
+                cart: cart,
+                totalAmount: totalAmount,
                 paymentMethod: selectedPaymentMethod,
                 date: new Date().toISOString(),
             }

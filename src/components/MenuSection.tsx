@@ -2,8 +2,8 @@ import React from "react"
 import Container from "./common/Container"
 import CoffeeSkeleton from "./skeletons/CoffeeSkeleton"
 import useFetchCoffee from "@/hooks/useFetchCoffee"
-import { Coffee } from "@/types/coffeeTypes"
 import CoffeeCard from "./common/CoffeeCard"
+import { Coffee } from "@/types/coffeeTypes"
 
 function MenuSection() {
     const { coffeeData, loading, error } = useFetchCoffee()

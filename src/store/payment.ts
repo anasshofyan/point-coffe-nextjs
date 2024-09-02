@@ -1,14 +1,21 @@
 import { UserDetailsProps } from "@/types/userTypes"
 import { atomWithStorage } from "jotai/utils"
 
-interface PaymentDetails {
-    user?: UserDetailsProps
-    cart: Array<{
-        id: string
-        name: string
-        price: number
-        quantity: number
-    }>
+export interface User {
+    name: string | null | undefined
+    email: string | null | undefined
+    image: string | null | undefined
+}
+
+export interface Coffee {
+    id: string
+    name: string
+    price: number
+}
+
+export interface PaymentDetails {
+    user: User
+    cart: {}
     totalAmount: number
     paymentMethod: string
     date: string
