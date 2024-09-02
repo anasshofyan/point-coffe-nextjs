@@ -6,12 +6,6 @@ export interface User {
     image: string | null | undefined
 }
 
-export interface Coffee {
-    id: string
-    name: string
-    price: number
-}
-
 export interface PaymentDetails {
     user: User
     cart: {}
