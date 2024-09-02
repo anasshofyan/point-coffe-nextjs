@@ -1,11 +1,18 @@
 import { z } from "zod"
 
-const emailRegex = /^[a-z]+@[a-z]+\.[a-z]{2,}$/
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+const usernameRegex = /^[a-zA-Z0-9_]{3,}$/
+
 const loginSchema = z.object({
-    email: z.string().regex(emailRegex, {
-        message:
-            "Alamat email tidak valid, harus menggunakan huruf kecil, tanpa karakter khusus, dan diakhiri dengan domain yang valid",
-    }),
+    input: z.string().refine(
+        (value) => {
+            return emailRegex.test(value) || usernameRegex.test(value)
+        },
+        {
+            message:
+                "Input harus berupa email yang valid atau username yang valid (minimal 3 karakter, hanya huruf, angka, dan underscore)",
+        }
+    ),
     password: z.string().min(6, {
         message: "Kata sandi harus terdiri dari minimal 6 karakter",
     }),
