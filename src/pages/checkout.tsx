@@ -25,7 +25,7 @@ function Checkout() {
 
     useEffect(() => {
         if (!session) {
-            signIn("google", { callbackUrl: "/checkout" })
+            router.push("/login")
         }
     }, [session])
 
