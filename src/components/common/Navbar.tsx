@@ -6,11 +6,11 @@ import Link from "next/link"
 import { EnumNav } from "@/constants/EnumNav"
 import { signOut, useSession } from "next-auth/react"
 import { useAtomValue } from "jotai"
-import { countCart } from "@/store/auth"
+import { totalCart } from "@/store/coffe"
 
 function Navbar() {
     const { data: session } = useSession<boolean>()
-    const count = useAtomValue(countCart)
+    const total = useAtomValue(totalCart)
 
     return (
         <nav className="fixed top-0 left-0 w-full bg-primary flex justify-between p-3 items-center text-light z-[9999]">
@@ -31,13 +31,10 @@ function Navbar() {
                             <Link href={item.url}>{item.label}</Link>
                         </Button>
                     ))}
-                    <Link
-                        className="relative flex flex-row gap-2"
-                        href="/auth/login"
-                    >
+                    <Link className="relative flex flex-row gap-2" href="/cart">
                         <ShoppingCart />
                         <span className="absolute -top-3 left-3 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                            {count}
+                            {total}
                         </span>
                     </Link>
                 </div>
