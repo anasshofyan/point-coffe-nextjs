@@ -1,4 +1,3 @@
-import { UserDetailsProps } from "@/types/userTypes"
 import { atomWithStorage } from "jotai/utils"
 
 export interface User {
