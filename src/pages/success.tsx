@@ -38,10 +38,10 @@ function Success() {
         <Container>
             <section className="container mx-auto p-4 mt-20">
                 <Title text="Payment Successful" />
-                <UserDetailSection user={paymentDetails.user} />
+                <UserDetailSection user={paymentDetails?.user} />
                 <OrderDetailSection
-                    cart={paymentDetails.cart}
-                    totalAmount={paymentDetails.totalAmount}
+                    cart={paymentDetails?.cart}
+                    totalAmount={paymentDetails?.totalAmount}
                 />
                 <div className="border rounded-lg p-4 shadow-md mt-6">
                     <div className="flex justify-between">
@@ -49,13 +49,13 @@ function Success() {
                             Payment Method
                         </h2>
                         <span className="text-md font-semibold">
-                            Bank {paymentDetails.paymentMethod}
+                            Bank {paymentDetails?.paymentMethod}
                         </span>
                     </div>
                     <div className="flex justify-between">
                         <h2 className="text-md font-semibold">Tanggal</h2>
                         <span className="text-md">
-                            {formatDate(paymentDetails.date)}
+                            {formatDate(paymentDetails?.date)}
                         </span>
                     </div>
                 </div>

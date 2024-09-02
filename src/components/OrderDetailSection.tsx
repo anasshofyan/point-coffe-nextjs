@@ -7,7 +7,7 @@ const OrderDetailSection: FC<OrderDetailsProps> = ({ cart, totalAmount }) => {
         <div className="border rounded-lg p-4 shadow-md">
             <h2 className="text-lg font-semibold mb-4">Order Details</h2>
             <ul>
-                {cart.map((item) => (
+                {cart.map((item: any) => (
                     <li key={item.id} className="flex justify-between mb-2">
                         <span>
                             {item.name} x {item.quantity} pcs

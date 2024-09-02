@@ -1,4 +1,7 @@
-export function formatDate(dateString: string): string {
+export function formatDate(dateString: string | null | undefined): string {
+    if (!dateString) {
+        return "-"
+    }
     const options: Intl.DateTimeFormatOptions = {
         weekday: "long",
         day: "2-digit",
