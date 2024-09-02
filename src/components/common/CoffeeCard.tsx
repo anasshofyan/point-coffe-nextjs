@@ -16,7 +16,6 @@ const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee }) => {
     const router = useRouter()
 
     useEffect(() => {
-        // Inisialisasi quantity dari data keranjang jika ada
         const cartItem = cart.find((item) => item.id === coffee.id)
         if (cartItem) {
             setQuantity(cartItem.quantity)
