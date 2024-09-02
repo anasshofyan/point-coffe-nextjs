@@ -1,11 +1,15 @@
 import React from "react"
 import Container from "../common/Container"
 
-function CoffeeSkeleton() {
+interface CoffeeSkeletonProps {
+    count: number
+}
+
+const CoffeeSkeleton: React.FC<CoffeeSkeletonProps> = ({ count }) => {
     return (
         <Container>
             <section className="my-32 flex flex-col gap-8">
-                {Array.from({ length: 10 }).map((_, index) => (
+                {Array.from({ length: count }).map((_, index) => (
                     <div
                         key={index}
                         className="grid grid-cols-1 md:grid-cols-3 items-center gap-7"

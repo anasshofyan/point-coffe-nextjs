@@ -1,4 +1,4 @@
-import { Coffee } from "@/types/coffeetypes"
+import { Coffee } from "@/types/coffeeTypes"
 import { useState, useEffect } from "react"
 
 const useFetchCoffee = () => {
