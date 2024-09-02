@@ -4,12 +4,14 @@ import Button from "./common/Button"
 import { useRouter } from "next/router"
 import { totalAmount } from "@/store/coffe"
 import { useAtom } from "jotai"
+import { useSession } from "next-auth/react"
 
 const CartSummarySection: React.FC<CartSummarySectionProps> = ({
     onCheckout,
 }) => {
     const router = useRouter()
     const [total] = useAtom(totalAmount)
+    const { data: session } = useSession()
 
     return (
         <div className="border rounded-lg p-4 shadow-md flex justify-between items-center mt-4">
@@ -20,7 +22,11 @@ const CartSummarySection: React.FC<CartSummarySectionProps> = ({
             <div className="flex-shrink-0">
                 <Button
                     variant="primary"
-                    onClick={() => router.push("/checkout")}
+                    onClick={() =>
+                        session
+                            ? router.push("/checkout")
+                            : router.push("/auth/login")
+                    }
                 >
                     Checkout
                 </Button>
