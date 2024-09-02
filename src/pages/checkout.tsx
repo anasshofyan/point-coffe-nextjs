@@ -10,6 +10,9 @@ import Container from "@/components/common/Container"
 import PaymentMethodSection from "@/components/PaymentMethodSection"
 import { EnumPayment } from "@/constants/EnumPayment"
 import { paymentDetail } from "@/store/payment"
+import Button from "@/components/common/Button"
+import OrderDetailSection from "@/components/OrderDetailSection"
+import UserDetailSection from "@/components/UserDetailSection"
 
 function Checkout() {
     const { data: session } = useSession()
@@ -50,7 +53,7 @@ function Checkout() {
             }
             setPaymentDetail(paymentDetails)
 
-            router.push("/payment/success")
+            router.push("/success")
         } else {
             alert("Please select a payment method.")
         }
@@ -60,51 +63,8 @@ function Checkout() {
         <Container>
             <section className="container mx-auto p-4 mt-20">
                 <Title text="Checkout" />
-                <div className="flex items-center mb-6">
-                    {session.user && session.user.image && (
-                        <Image
-                            src={session.user.image}
-                            alt={session.user.name as string}
-                            width={35}
-                            height={35}
-                            className="rounded-full mr-4"
-                        />
-                    )}
-                    <div>
-                        <h2 className="text-md font-semibold">
-                            {session.user && session.user.name}
-                        </h2>
-                    </div>
-                </div>
-                <div className="border rounded-lg p-4 shadow-md">
-                    <h2 className="text-2xl font-semibold mb-4">
-                        Order Details
-                    </h2>
-                    <ul>
-                        {cart.map((item) => (
-                            <li
-                                key={item.id}
-                                className="flex justify-between mb-2"
-                            >
-                                <span>
-                                    {item.name} x {item.quantity} pcs
-                                </span>
-                                <span>
-                                    Rp{" "}
-                                    {formatNumber(item.price * item.quantity)}
-                                </span>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="flex justify-between mt-4 pt-4 border-t">
-                        <span className="text-xl font-semibold">
-                            Total Amount
-                        </span>
-                        <span className="text-xl font-semibold">
-                            Rp {formatNumber(totalAmount)}
-                        </span>
-                    </div>
-                </div>
+                <UserDetailSection user={session.user} />
+                <OrderDetailSection cart={cart} totalAmount={totalAmount} />
                 <Title text="Payment Method" />
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
                     {EnumPayment.map((method) => (
@@ -119,12 +79,9 @@ function Checkout() {
                         />
                     ))}
                 </div>
-                <button
-                    className="px-4 py-2 bg-blue-500 text-white rounded"
-                    onClick={handlePayment}
-                >
+                <Button variant="primary" onClick={handlePayment}>
                     Process Payment
-                </button>
+                </Button>
             </section>
         </Container>
     )

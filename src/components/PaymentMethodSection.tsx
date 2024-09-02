@@ -1,12 +1,6 @@
 import React from "react"
 import Image from "next/image"
-
-interface PaymentMethodSectionProps {
-    name: string
-    logo: string
-    selected: boolean
-    onSelect: () => void
-}
+import { PaymentMethodSectionProps } from "@/types/paymentTypes"
 
 const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({
     name,
