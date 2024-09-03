@@ -43,7 +43,16 @@ const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee }) => {
                     updatedCart[itemIndex].quantity = newQuantity
                 }
             } else if (newQuantity > 0) {
-                updatedCart.push({ ...coffee, quantity: newQuantity })
+                updatedCart.push({
+                    ...coffee,
+                    id: coffee.id || 0,
+                    name: coffee.name || "",
+                    region: coffee.region || "",
+                    description: coffee.description || "",
+                    price: coffee.price || 0,
+                    image_url: coffee.image_url || "",
+                    quantity: newQuantity,
+                })
             }
             setCart(updatedCart)
         },

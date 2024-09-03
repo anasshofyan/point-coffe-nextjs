@@ -1,5 +1,11 @@
 import CartItem from "./CartItem"
-import { CartListProps } from "@/types/cartTypes"
+
+interface CartListProps {
+    cart: any[]
+    incrementQuantity: (item: any) => void
+    decrementQuantity: (item: any) => void
+    goToDetail: (item: any) => void
+}
 
 const CartList: React.FC<CartListProps> = ({
     cart,
