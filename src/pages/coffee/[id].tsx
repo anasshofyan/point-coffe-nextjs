@@ -1,10 +1,18 @@
 import CoffeeCard from "@/components/common/CoffeeCard"
 import Container from "@/components/common/Container"
 import CoffeeSkeleton from "@/components/skeletons/CoffeeSkeleton"
-import { CoffeeProps } from "@/types/coffeeTypes"
 import { GetServerSideProps, NextPage } from "next"
 import Head from "next/head"
 import React, { useState, useEffect } from "react"
+
+interface CoffeeProps {
+    id: number
+    name: string
+    region: string
+    description: string
+    price: number
+    image_url: string
+}
 
 interface CoffeePointProps {
     coffeeData: CoffeeProps[]
