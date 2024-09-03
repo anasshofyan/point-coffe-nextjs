@@ -51,7 +51,7 @@ const useFetchCoffee = () => {
         }
 
         fetchCoffee()
-    }, [])
+    }, [cart])
 
     return { coffeeData, loading, error }
 }
