@@ -29,8 +29,6 @@ const useFetchCoffee = () => {
                     }
                 })
 
-                console.log(mergeData)
-
                 setCoffeeData(mergeData)
             } catch (err) {
                 if (err instanceof Error) {

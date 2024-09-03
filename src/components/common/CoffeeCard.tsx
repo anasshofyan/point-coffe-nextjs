@@ -1,12 +1,24 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react"
 import Image from "next/image"
-import { CoffeePointProps } from "@/types/coffeeTypes"
 import { formatNumber } from "@/utils/format-number"
 import { useAtom } from "jotai"
 import { useRouter } from "next/router"
 import { cartAtom } from "@/store/coffe"
 
-const CoffeeCard: React.FC<CoffeePointProps> = ({ coffee }) => {
+interface CoffeeProps {
+    id: number
+    name: string
+    region: string
+    description: string
+    price: number
+    image_url: string
+}
+
+interface CoffeeCardProps {
+    coffee: CoffeeProps
+}
+
+const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee }) => {
     const [cart, setCart] = useAtom(cartAtom)
     const [quantity, setQuantity] = useState(0)
     const router = useRouter()
