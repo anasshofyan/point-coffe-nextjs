@@ -15,8 +15,8 @@ const CartItem: React.FC<CartItemProps> = ({
             onClick={() => goToDetail(item)}
         >
             <Image
-                src={item.image_url}
-                alt={item.name}
+                src={item.image_url || "/coffee.jpg"}
+                alt={item.name || "Coffee"}
                 width={100}
                 height={100}
                 className="object-cover rounded-md mr-4"
@@ -28,7 +28,7 @@ const CartItem: React.FC<CartItemProps> = ({
                 </h2>
                 <p className="text-gray-600 mb-4">{item.description}</p>
                 <p className="text-lg font-semibold">
-                    Rp {formatNumber(item.price)}
+                    Rp {formatNumber(item.price || 0)}
                 </p>
             </div>
             <div className="ml-4 flex items-center">

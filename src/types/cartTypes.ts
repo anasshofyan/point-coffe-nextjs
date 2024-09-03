@@ -1,4 +1,4 @@
-import { CoffeeProps } from "./coffeePropsTypes"
+import { CoffeeProps } from "./coffeeTypes"
 
 export interface CartItemProps {
     item: CoffeeProps

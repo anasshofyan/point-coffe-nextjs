@@ -44,11 +44,15 @@ function Cart() {
     }
 
     const incrementQuantity = (item: CoffeeProps) => {
-        updateCart(item, item.quantity + 1)
+        if (item.quantity !== undefined) {
+            updateCart(item, item.quantity + 1)
+        }
     }
 
     const decrementQuantity = (item: CoffeeProps) => {
-        updateCart(item, item.quantity - 1)
+        if (item.quantity !== undefined) {
+            updateCart(item, item.quantity - 1)
+        }
     }
 
     return (
