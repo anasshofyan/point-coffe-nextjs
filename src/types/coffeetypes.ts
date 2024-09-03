@@ -11,3 +11,7 @@ export interface CoffeeProps {
     grind_option?: string[]
     quantity?: number
 }
+
+export interface CoffeePointProps {
+    coffee: CoffeeProps
+}

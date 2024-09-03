@@ -1,12 +1,12 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react"
 import Image from "next/image"
+import { CoffeePointProps } from "@/types/coffeeTypes"
 import { formatNumber } from "@/utils/format-number"
 import { useAtom } from "jotai"
 import { useRouter } from "next/router"
 import { cartAtom } from "@/store/coffe"
-import { CoffeeProps } from "@/types/coffeeTypes"
 
-const CoffeeCard: React.FC<{ coffee: CoffeeProps }> = ({ coffee }) => {
+const CoffeeCard: React.FC<CoffeePointProps> = ({ coffee }) => {
     const [cart, setCart] = useAtom(cartAtom)
     const [quantity, setQuantity] = useState(0)
     const router = useRouter()
@@ -35,15 +35,14 @@ const CoffeeCard: React.FC<{ coffee: CoffeeProps }> = ({ coffee }) => {
             }
             setCart(updatedCart)
         },
-        [cart, coffee, setCart]
+        [cart, coffee]
     )
 
     const goToDetail = () => {
         router.push(`/coffee/${coffee.id}`)
     }
 
-    const incrementQuantity = (e: React.MouseEvent) => {
-        e.stopPropagation()
+    const incrementQuantity = () => {
         setQuantity((prev) => {
             const newQuantity = prev < 3 ? prev + 1 : 3
             updateCart(newQuantity)
@@ -51,8 +50,7 @@ const CoffeeCard: React.FC<{ coffee: CoffeeProps }> = ({ coffee }) => {
         })
     }
 
-    const decrementQuantity = (e: React.MouseEvent) => {
-        e.stopPropagation()
+    const decrementQuantity = () => {
         setQuantity((prev) => {
             const newQuantity = prev > 0 ? prev - 1 : 0
             updateCart(newQuantity)
@@ -67,10 +65,10 @@ const CoffeeCard: React.FC<{ coffee: CoffeeProps }> = ({ coffee }) => {
             onClick={goToDetail}
         >
             <Image
-                src={coffee.image_url || "/coffee.png"}
+                src={coffee.image_url || "/coffee.jpg"}
                 alt={coffee.name || "Coffee"}
-                width={0}
-                height={0}
+                width={"0"}
+                height={"0"}
                 quality={70}
                 sizes="100vh"
                 className="w-full object-cover"
@@ -91,7 +89,10 @@ const CoffeeCard: React.FC<{ coffee: CoffeeProps }> = ({ coffee }) => {
                     <div className="ml-4 flex items-center">
                         <button
                             className="px-2 py-1 bg-gray-300 text-black rounded-l"
-                            onClick={decrementQuantity}
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                decrementQuantity()
+                            }}
                         >
                             -
                         </button>
@@ -100,7 +101,10 @@ const CoffeeCard: React.FC<{ coffee: CoffeeProps }> = ({ coffee }) => {
                         </span>
                         <button
                             className="px-2 py-1 bg-gray-300 text-black rounded-r"
-                            onClick={incrementQuantity}
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                incrementQuantity()
+                            }}
                         >
                             +
                         </button>
