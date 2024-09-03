@@ -1,6 +1,15 @@
-import { CoffeeProps } from "@/types/coffeeTypes"
 import { atom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
+
+export interface CoffeeProps {
+    id: number
+    name: string
+    region: string
+    description: string
+    price: number
+    image_url: string
+    quantity?: number
+}
 
 export const cartAtom = atomWithStorage<CoffeeProps[]>("cart", [])
 export const totalCart = atom<number>((get) => {
