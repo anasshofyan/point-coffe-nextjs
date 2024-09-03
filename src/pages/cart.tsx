@@ -6,7 +6,7 @@ import { formatNumber } from "@/utils/format-number"
 import { cartAtom, totalCart } from "@/store/coffe"
 import { useCallback, useState } from "react"
 import { useRouter } from "next/router"
-import { Coffee } from "@/types/coffeeTypes"
+import { CoffeeProps } from "@/types/coffeeTypes"
 import CartList from "@/components/common/CartList"
 import Title from "@/components/common/Title"
 import { totalAmount } from "../store/coffe"
@@ -20,7 +20,7 @@ function Cart() {
     const router = useRouter()
 
     const updateCart = useCallback(
-        (coffee: Coffee, newQuantity: number) => {
+        (coffee: CoffeeProps, newQuantity: number) => {
             const updatedCart = [...cart]
             const itemIndex = updatedCart.findIndex(
                 (item) => item.id === coffee.id
@@ -39,15 +39,15 @@ function Cart() {
         [cart, setCart]
     )
 
-    const goToDetail = (coffee: Coffee) => {
+    const goToDetail = (coffee: CoffeeProps) => {
         router.push(`/coffee/${coffee.id}`)
     }
 
-    const incrementQuantity = (item: Coffee) => {
+    const incrementQuantity = (item: CoffeeProps) => {
         updateCart(item, item.quantity + 1)
     }
 
-    const decrementQuantity = (item: Coffee) => {
+    const decrementQuantity = (item: CoffeeProps) => {
         updateCart(item, item.quantity - 1)
     }
 

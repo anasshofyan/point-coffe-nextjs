@@ -1,6 +1,5 @@
 import Image from "next/image"
 import { formatNumber } from "@/utils/format-number"
-import { Coffee } from "@/types/coffeeTypes"
 import { CartItemProps } from "@/types/cartTypes"
 
 const CartItem: React.FC<CartItemProps> = ({

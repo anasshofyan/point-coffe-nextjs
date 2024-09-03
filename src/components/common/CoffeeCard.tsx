@@ -1,13 +1,13 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react"
 import Image from "next/image"
-import { Coffee } from "@/types/coffeeTypes"
+import { CoffeeProps } from "@/types/coffeeTypes"
 import { formatNumber } from "@/utils/format-number"
 import { useAtom } from "jotai"
 import { useRouter } from "next/router"
 import { cartAtom } from "@/store/coffe"
 
 interface CoffeeCardProps {
-    coffee: Coffee
+    coffee: CoffeeProps
 }
 
 const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee }) => {

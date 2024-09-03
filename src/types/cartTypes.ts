@@ -1,17 +1,17 @@
-import { Coffee } from "./coffeeTypes"
+import { CoffeeProps } from "./coffeePropsTypes"
 
 export interface CartItemProps {
-    item: Coffee
-    incrementQuantity: (item: Coffee) => void
-    decrementQuantity: (item: Coffee) => void
-    goToDetail: (item: Coffee) => void
+    item: CoffeeProps
+    incrementQuantity: (item: CoffeeProps) => void
+    decrementQuantity: (item: CoffeeProps) => void
+    goToDetail: (item: CoffeeProps) => void
 }
 
 export interface CartListProps {
-    cart: Coffee[]
-    incrementQuantity: (item: Coffee) => void
-    decrementQuantity: (item: Coffee) => void
-    goToDetail: (item: Coffee) => void
+    cart: CoffeeProps[]
+    incrementQuantity: (item: CoffeeProps) => void
+    decrementQuantity: (item: CoffeeProps) => void
+    goToDetail: (item: CoffeeProps) => void
 }
 
 export interface CartSummarySectionProps {

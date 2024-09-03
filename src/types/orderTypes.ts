@@ -1,6 +1,6 @@
-import { Coffee } from "./coffeeTypes"
+import { CoffeeProps } from "./coffeeTypes"
 
 export interface OrderDetailsProps {
-    cart: Coffee[] | [] | null | undefined | any | {}
+    cart: CoffeeProps[] | [] | null | undefined | any | {}
     totalAmount: number | null | undefined | any | {}
 }

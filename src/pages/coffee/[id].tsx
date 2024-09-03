@@ -1,17 +1,17 @@
 import CoffeeCard from "@/components/common/CoffeeCard"
 import Container from "@/components/common/Container"
 import CoffeeSkeleton from "@/components/skeletons/CoffeeSkeleton"
-import type { Coffee } from "@/types/coffeeTypes"
+import { CoffeeProps } from "@/types/coffeeTypes"
 import { GetServerSideProps, NextPage } from "next"
 import Head from "next/head"
 import React, { useState, useEffect } from "react"
 
-interface CoffeeProps {
-    coffeeData: Coffee[]
+interface CoffeePointProps {
+    coffeeData: CoffeeProps[]
     error: string | null
 }
 
-const Coffee: NextPage<CoffeeProps> = ({ coffeeData, error }) => {
+const Coffee: NextPage<CoffeePointProps> = ({ coffeeData, error }) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -70,7 +70,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         if (!res.ok) {
             throw new Error("Failed to fetch coffee data")
         }
-        const coffeeData: Coffee[] = await res.json()
+        const coffeeData: CoffeeProps[] = await res.json()
 
         return {
             props: {
