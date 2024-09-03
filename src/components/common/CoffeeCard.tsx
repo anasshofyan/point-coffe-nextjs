@@ -6,12 +6,12 @@ import { useRouter } from "next/router"
 import { cartAtom } from "@/store/coffe"
 
 interface CoffeeProps {
-    id: number
-    name: string
-    region: string
-    description: string
-    price: number
-    image_url: string
+    id?: number | undefined
+    name?: string | undefined
+    region?: string | undefined
+    description?: string | undefined
+    price?: number | undefined
+    image_url?: string | undefined
 }
 
 interface CoffeeCardProps {

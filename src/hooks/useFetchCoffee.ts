@@ -1,7 +1,15 @@
 import { cartAtom } from "@/store/coffe"
-import { CoffeeProps } from "@/types/coffeeTypes"
 import { useAtom } from "jotai"
 import { useState, useEffect } from "react"
+
+interface CoffeeProps {
+    id: number
+    name: string
+    region: string
+    description: string
+    price: number
+    image_url: string
+}
 
 const useFetchCoffee = () => {
     const [coffeeData, setCoffeeData] = useState<CoffeeProps[]>([])
