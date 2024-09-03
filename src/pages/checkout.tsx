@@ -34,7 +34,7 @@ function Checkout() {
     }
 
     const totalAmount = cart.reduce(
-        (total, item) => total + item.price * item.quantity,
+        (total, item) => total + item.price * (item.quantity ?? 0),
         0
     )
 
