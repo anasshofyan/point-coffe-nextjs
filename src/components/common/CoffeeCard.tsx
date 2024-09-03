@@ -14,7 +14,7 @@ const CoffeeCard: React.FC<{ coffee: CoffeeProps }> = ({ coffee }) => {
     useEffect(() => {
         const cartItem = cart.find((item) => item.id === coffee.id)
         if (cartItem) {
-            setQuantity(cartItem.quantity)
+            setQuantity(cartItem.quantity || 0)
         }
     }, [cart, coffee.id])
 
@@ -67,8 +67,8 @@ const CoffeeCard: React.FC<{ coffee: CoffeeProps }> = ({ coffee }) => {
             onClick={goToDetail}
         >
             <Image
-                src={coffee.image_url}
-                alt={coffee.name}
+                src={coffee.image_url || "/coffee.png"}
+                alt={coffee.name || "Coffee"}
                 width={0}
                 height={0}
                 quality={70}
@@ -86,7 +86,7 @@ const CoffeeCard: React.FC<{ coffee: CoffeeProps }> = ({ coffee }) => {
                 <div className="flex flex-row items-start font-times">
                     <span className="mr-1 text-lg">Rp</span>
                     <span className="text-4xl font-semibold">
-                        {formatNumber(coffee.price)}
+                        {formatNumber(coffee.price || 0)}
                     </span>
                     <div className="ml-4 flex items-center">
                         <button
