@@ -1,3 +1,4 @@
+import Image from "next/image"
 import React, { FC, ReactNode, ButtonHTMLAttributes } from "react"
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -36,7 +37,7 @@ const Button: FC<ButtonProps> = ({
 
     return (
         <button className={getButtonClasses()} {...props}>
-            {icon && <img src={icon} alt="icon" className="mr-2 size-4" />}{" "}
+            {icon && <Image src={icon} alt="icon" className="mr-2 size-4" />}{" "}
             {/* Menampilkan ikon jika ada */}
             {children}
         </button>
