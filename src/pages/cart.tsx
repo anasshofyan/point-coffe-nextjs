@@ -1,17 +1,30 @@
 import Container from "@/components/common/Container"
 import Head from "next/head"
 import { useAtom } from "jotai"
-import Image from "next/image"
-import { formatNumber } from "@/utils/format-number"
 import { cartAtom, totalCart } from "@/store/coffe"
-import { useCallback, useState } from "react"
+import { useCallback } from "react"
 import { useRouter } from "next/router"
-import { CoffeeProps } from "@/types/coffeeTypes"
 import CartList from "@/components/common/CartList"
 import Title from "@/components/common/Title"
 import { totalAmount } from "../store/coffe"
-import Button from "@/components/common/Button"
 import CartSummarySection from "@/components/CartSummarySection"
+
+interface CoffeeProps {
+    id?: string | number | undefined
+    name?: string | undefined
+    region?: string | undefined
+    description?: string | undefined
+    price?: number | undefined
+    image_url?: string | undefined
+    quantity?: number | undefined
+}
+
+interface CartProps {
+    cart: CoffeeProps[]
+    incrementQuantity: (item: CoffeeProps) => void
+    decrementQuantity: (item: CoffeeProps) => void
+    goToDetail: (coffee: CoffeeProps) => void
+}
 
 function Cart() {
     const [cart, setCart] = useAtom(cartAtom)
@@ -32,7 +45,11 @@ function Cart() {
                     updatedCart[itemIndex].quantity = newQuantity
                 }
             } else if (newQuantity > 0) {
-                updatedCart.push({ ...coffee, quantity: newQuantity })
+                updatedCart.push({
+                    ...coffee,
+                    quantity: newQuantity,
+                    id: coffee.id as number,
+                })
             }
             setCart(updatedCart)
         },
