@@ -3,7 +3,6 @@ import Container from "./common/Container"
 import CoffeeSkeleton from "./skeletons/CoffeeSkeleton"
 import useFetchCoffee from "@/hooks/useFetchCoffee"
 import CoffeeCard from "./common/CoffeeCard"
-import { CoffeeProps } from "@/types/coffeeTypes"
 
 function MenuSection() {
     const { coffeeData, loading, error } = useFetchCoffee()
@@ -24,7 +23,7 @@ function MenuSection() {
                 <h1 className="text-3xl text-center mb-6 font-times">
                     Coffee Menu
                 </h1>
-                {coffeeData.map((coffee: CoffeeProps) => (
+                {coffeeData.map((coffee) => (
                     <CoffeeCard key={coffee.id} coffee={coffee} />
                 ))}
             </section>
