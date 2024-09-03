@@ -1,7 +1,7 @@
 import { atom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
 
-export interface CoffeeProps {
+interface CoffeeProps {
     id: number
     name: string
     region: string
